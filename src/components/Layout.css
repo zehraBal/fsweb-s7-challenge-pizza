@@ -1,0 +1,60 @@
+.home-page {
+  font-family: "Barlow";
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url("Assets/mile1-assets/home-banner.png");
+  background-size: cover;
+  background-position: center;
+}
+.home-page h1 {
+  margin-top: 10%;
+  font-weight: 300;
+  text-align: center;
+  color: #faf7f2;
+  font-size: 4.5rem;
+}
+.home-page span {
+  display: block;
+}
+.header {
+  margin: 0;
+  padding: 10px 0 10px 0;
+  width: 100vw;
+  height: 20vh;
+  font-size: 1rem;
+  background-color: #ce2829;
+  color: #faf7f2;
+  text-align: center;
+  font-family: "Barlow";
+  font-weight: 600;
+}
+.siparis.buton-div {
+  margin-top: 20%;
+}
+.siparis-buton {
+  background-color: #fdc913;
+  color: #292929;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #292929; /* Metin rengi */
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 400;
+  text-transform: uppercase;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+}
+.siparis-buton:hover {
+  background-color: #e0a300;
+  color: #292929;
+}
