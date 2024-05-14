@@ -23,17 +23,15 @@
   display: block;
 }
 .header {
-  margin: 0;
-  padding: 10px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 20vh;
-  font-size: 1rem;
   background-color: #ce2829;
-  color: #faf7f2;
-  text-align: center;
-  font-family: "Barlow";
-  font-weight: 600;
 }
+
 .siparis.buton-div {
   margin-top: 20%;
 }
@@ -57,4 +55,31 @@
 .siparis-buton:hover {
   background-color: #e0a300;
   color: #292929;
+}
+
+.siparisForm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  max-width: 600px;
+  padding: 20px;
+}
+.boyut-kalinlik-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.boyut,
+.hamur-kalinligi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.malzemeler-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
