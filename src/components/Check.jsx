@@ -1,11 +1,11 @@
 import { Label, Input } from "reactstrap";
-export default function Check({ changeFn, isChecked, value, label }) {
+export default function Check({ changeFn, isChecked, value, label, name }) {
   return (
     <Label>
       <Input
         type="checkbox"
         onChange={changeFn}
-        name="ekMalzeme"
+        name={name}
         value={value}
         checked={isChecked}
       />

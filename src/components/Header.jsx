@@ -3,7 +3,7 @@ import { Nav, NavItem, NavLink } from "reactstrap";
 export default function Header() {
   const location = useLocation();
   return (
-    <header class="header">
+    <header className="header">
       <img src="./Assets/mile1-assets/logo.svg" alt="logo" />
       {location.pathname === "/siparisFormu" && (
         <Nav>

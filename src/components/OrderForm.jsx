@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import Check from "./Check";
+import Count from "./Count";
+import axios from "axios";
 
 const initialErrors = {
-  boyut: "",
-  kalinlik: "",
-  malzemeler: "",
-  isim: "",
+  ekMalzeme: "",
+  fullname: "",
 };
 const malzemeler = [
   { value: "pepperoni", label: "Pepperoni" },
@@ -29,40 +29,86 @@ const initialForm = {
   ekMalzeme: [],
   siparisNotu: "",
   fullname: "",
-  adet: "",
+  adet: 1,
 };
 
 export default function OrderForm() {
-  const [boyut, setboyut] = useState("");
-  const [hamur, setHamur] = useState("");
-  const [eklemeler, setEklemeler] = useState([]);
-  const [adet, setAdet] = useState(1);
+  const [isValid, setIsValid] = useState(false);
+  const [count, setCount] = useState(1);
   const [fiyat, setFiyat] = useState(0);
-  const [erros, setErrors] = useState(initialErrors);
+  const [errors, setErrors] = useState(initialErrors);
   const [form, setForm] = useState(initialForm);
+
+  // handleChange fonksiyonu
   const handleChange = (event) => {
     const { type, name, checked, value } = event.target;
     let newValue;
-    if (type === "checkbox") {
+    if (name === "ekMalzeme") {
       const oldValues = form.ekMalzeme;
       if (checked) {
         newValue = [...oldValues, value]; // Seçildiyse değeri ekler
       } else {
         newValue = oldValues.filter((v) => v !== value); // Seçilmediyse değeri kaldırır
       }
+
+      if (newValue.length < 4 && newValue.length > 10) {
+        setErrors({ ...errors, [name]: true });
+      } else {
+        setErrors({ ...errors, [name]: false });
+      }
     } else {
       newValue = value;
     }
 
     setForm({ ...form, [name]: newValue });
+
+    if (name == "fullname") {
+      if (value.replaceAll(" ", "").length >= 3) {
+        setErrors({ ...errors, [name]: false });
+      } else {
+        setErrors({ ...errors, [name]: true });
+      }
+    }
+  };
+  console.log(errors);
+  //handleSubmit fonksiyonu
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("https://reqres.in/api/pizza", form)
+      .then((res) => {
+        console.log(res.data); // API yanıtını konsola yazdır
+        const { id, createdAt } = res.data; // Yanıttan gerekli bilgileri al
+        console.log("Sipariş Özeti:");
+        console.log("ID:", id);
+        console.log("Oluşturulma Tarihi:", createdAt);
+        setForm(initialForm);
+        setFiyat(0);
+        setCount(1);
+      })
+      .catch((err) => console.log(err));
   };
 
-  console.log(form);
-  const handleSubmit = (e) => {};
-  useEffect(() => {}, []);
+  //toplam tutar hesaplamak için fonksiyon
+  const updatePrice = () => {
+    let newFiyat = form.adet * (85.5 + form.ekMalzeme.length * 5);
+    setFiyat(newFiyat);
+  };
+
+  //fiyatı formda seçilenlere göre güncelleme
+  useEffect(() => {
+    updatePrice();
+  }, [form]);
+
+  // adet için bir handle fonksiyonu count sayısını forma kaydediyor
+  const handleCountChange = (newCount) => {
+    setForm({ ...form, adet: newCount });
+  };
+
+  //form elemanları
 
   return (
-    <Form className="siparisForm-container">
+    <Form className="siparisForm-container" onSubmit={handleSubmit}>
       <h3>Position Absolute Acı Pizza</h3>
       <h2>85.50₺</h2>
       <p>
@@ -74,7 +120,7 @@ export default function OrderForm() {
         yemektir.. Küçük bir pizzaya bazen pizzetta denir.
       </p>
       <div className="pizza-size-container">
-        <div className="boyut-kalinlik-container">
+        <div className="boyut-container">
           <div className="boyut">
             <h3>Boyut Seç</h3>
             <FormGroup>
@@ -109,41 +155,74 @@ export default function OrderForm() {
               />
               <Label htmlFor="büyük">Büyük</Label>
             </FormGroup>
-            <h3>Hamur Kalinligi</h3>
-            <FormGroup>
-              <select
-                type="select"
-                name="pizzaHamur"
-                onChange={handleChange}
-                value={form.pizzaHamur}
-              >
-                <option>İnce Hamur</option>
-                <option>Klasik Hamur</option>
-              </select>
-            </FormGroup>
           </div>
+        </div>
+        <div className="hamur-container">
+          <h3>Hamur Kalinligi</h3>
+          <FormGroup>
+            <select
+              type="select"
+              name="pizzaHamur"
+              onChange={handleChange}
+              value={form.pizzaHamur}
+            >
+              <option>İnce Hamur</option>
+              <option>Klasik Hamur</option>
+            </select>
+          </FormGroup>
         </div>
       </div>
 
       <div className="malzemeler-container">
+        <h3>Ek Malzemeler</h3>
+        <p>En az 4 en fazla 10 malzeme seçebilirsiniz. 5₺ </p>
         {malzemeler.map((malzeme, index) => {
           return (
             <Check
+              key={index}
               changeFn={handleChange}
               isChecked={form.ekMalzeme.includes(malzeme.value)}
               value={malzeme.value}
               label={malzeme.label}
+              name="ekMalzeme"
             />
           );
         })}
       </div>
-      <div>
-        <h3>Ad Soyad</h3>
-        <Input type="textarea" name="fullname" onChange={handleChange} />
-        <h3>Sipariş Notu</h3>
-        <Input type="textarea" name="siparisNotu" onChange={handleChange} />
+
+      <div className="count-button">
+        {" "}
+        <Count
+          onCountChange={handleCountChange}
+          count={count}
+          setCount={setCount}
+        />
       </div>
-      <button>Sipariş Ver</button>
+
+      <div className="input-container">
+        <h3>Ad Soyad</h3>
+        <Input
+          type="textarea"
+          name="fullname"
+          value={form.fullname}
+          onChange={handleChange}
+        />
+        <h3>Sipariş Notu</h3>
+        <Input
+          type="textarea"
+          name="siparisNotu"
+          value={form.siparisNotu}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="siparisOzeti-container">
+        <div className="siparis-toplamı">
+          <h3>Sipariş Toplamı</h3>
+          <p>Seçimler: {form.ekMalzeme.length * 5}₺</p>
+          <p>Toplam: {fiyat}₺</p>
+        </div>
+        <button className="submit-button"> Sipariş Ver</button>
+      </div>
     </Form>
   );
 }
