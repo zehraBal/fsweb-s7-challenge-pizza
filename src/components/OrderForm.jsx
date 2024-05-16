@@ -50,8 +50,7 @@ export default function OrderForm() {
       } else {
         newValue = oldValues.filter((v) => v !== value); // Seçilmediyse değeri kaldırır
       }
-
-      if (newValue.length < 4 && newValue.length > 10) {
+      if (newValue.length < 4 || newValue.length > 10) {
         setErrors({ ...errors, [name]: true });
       } else {
         setErrors({ ...errors, [name]: false });
@@ -70,7 +69,6 @@ export default function OrderForm() {
       }
     }
   };
-  console.log(errors);
   //handleSubmit fonksiyonu
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -173,9 +171,9 @@ export default function OrderForm() {
         </div>
       </div>
 
+      <h3>Ek Malzemeler</h3>
+      <p>En az 4 en fazla 10 malzeme seçebilirsiniz. 5₺ </p>
       <div className="malzemeler-container">
-        <h3>Ek Malzemeler</h3>
-        <p>En az 4 en fazla 10 malzeme seçebilirsiniz. 5₺ </p>
         {malzemeler.map((malzeme, index) => {
           return (
             <Check
@@ -185,18 +183,10 @@ export default function OrderForm() {
               value={malzeme.value}
               label={malzeme.label}
               name="ekMalzeme"
+              className="malzeme-label"
             />
           );
         })}
-      </div>
-
-      <div className="count-button">
-        {" "}
-        <Count
-          onCountChange={handleCountChange}
-          count={count}
-          setCount={setCount}
-        />
       </div>
 
       <div className="input-container">
@@ -216,12 +206,19 @@ export default function OrderForm() {
         />
       </div>
       <div className="siparisOzeti-container">
+        <div className="count-button">
+          <Count
+            onCountChange={handleCountChange}
+            count={count}
+            setCount={setCount}
+          />
+        </div>
         <div className="siparis-toplamı">
           <h3>Sipariş Toplamı</h3>
           <p>Seçimler: {form.ekMalzeme.length * 5}₺</p>
           <p>Toplam: {fiyat}₺</p>
+          <button className="submit-button"> Sipariş Ver</button>
         </div>
-        <button className="submit-button"> Sipariş Ver</button>
       </div>
     </Form>
   );

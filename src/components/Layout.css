@@ -58,20 +58,30 @@
 }
 
 .siparisForm-container {
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
+.siparisForm-container h2,
+h3 {
+  margin: 10px;
+}
 .pizza-size-container {
   display: flex;
   justify-content: space-between;
-  gap: 20px; /* Boyut ve kalınlık seçenekleri arasındaki boşluğu ayarlayın */
+  gap: 20px;
 }
 
 .malzemeler-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.malzeme-label {
+  flex-basis: calc(33.33% - 10px); /* 3 malzeme içeren sütunlar */
+  margin-bottom: 10px; /* Malzemeler arasındaki boşluk */
+  padding: 5px;
 }
 
 .malzemeler-container h3 {
@@ -79,23 +89,24 @@
 }
 .siparisOzeti-container {
   display: flex;
-  flex-direction: column; /* Sipariş özetinin içeriğini yatay değil, dikey hale getirin */
-  align-items: stretch; /* Sipariş özetini genişliği boyunca uzatın */
-  gap: 20px; /* Sipariş özeti ve buton arasındaki boşluğu ayarlayın */
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .siparis-toplamı {
   border: 1px solid #5f5f5f;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   margin-top: 20px;
+  text-align: center;
 }
 
 .submit-button {
   background-color: #fdc913;
   color: #292929;
   border: none;
-  padding: 10px 20px;
   cursor: pointer;
 }
 
@@ -107,6 +118,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .input-container h3 {
