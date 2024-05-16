@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Form, FormGroup, Label, Input } from "reactstrap";
+import { useHistory } from "react-router-dom";
 import Check from "./Check";
 import Count from "./Count";
 import axios from "axios";
 
 const initialErrors = {
-  ekMalzeme: "",
-  fullname: "",
+  ekMalzeme: true,
+  fullname: true,
 };
 const malzemeler = [
   { value: "pepperoni", label: "Pepperoni" },
@@ -24,8 +25,8 @@ const malzemeler = [
   { value: "kabak", label: "Kabak" },
 ];
 const initialForm = {
-  pizzaSize: "",
-  pizzaHamur: "",
+  pizzaSize: "orta",
+  pizzaHamur: "klasik",
   ekMalzeme: [],
   siparisNotu: "",
   fullname: "",
@@ -33,7 +34,8 @@ const initialForm = {
 };
 
 export default function OrderForm() {
-  const [isValid, setIsValid] = useState(false);
+  const history = useHistory();
+  const [isValid, setIsValid] = useState(true);
   const [count, setCount] = useState(1);
   const [fiyat, setFiyat] = useState(0);
   const [errors, setErrors] = useState(initialErrors);
@@ -72,6 +74,7 @@ export default function OrderForm() {
   //handleSubmit fonksiyonu
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!isValid) return;
     axios
       .post("https://reqres.in/api/pizza", form)
       .then((res) => {
@@ -83,6 +86,7 @@ export default function OrderForm() {
         setForm(initialForm);
         setFiyat(0);
         setCount(1);
+        history.push("/siparisOzeti");
       })
       .catch((err) => console.log(err));
   };
@@ -102,6 +106,15 @@ export default function OrderForm() {
   const handleCountChange = (newCount) => {
     setForm({ ...form, adet: newCount });
   };
+
+  //isValid
+  useEffect(() => {
+    if (errors.ekMalzeme || errors.fullname) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+  }, [errors]);
 
   //form elemanları
 
@@ -164,15 +177,19 @@ export default function OrderForm() {
               onChange={handleChange}
               value={form.pizzaHamur}
             >
-              <option>İnce Hamur</option>
               <option>Klasik Hamur</option>
+              <option>İnce Hamur</option>
             </select>
           </FormGroup>
         </div>
       </div>
 
       <h3>Ek Malzemeler</h3>
-      <p>En az 4 en fazla 10 malzeme seçebilirsiniz. 5₺ </p>
+      {errors.ekMalzeme && (
+        <p style={{ color: "red" }}>
+          En az 4 en fazla 10 malzeme seçebilirsiniz. 5₺
+        </p>
+      )}
       <div className="malzemeler-container">
         {malzemeler.map((malzeme, index) => {
           return (
@@ -197,12 +214,18 @@ export default function OrderForm() {
           value={form.fullname}
           onChange={handleChange}
         />
+        {errors.fullname && (
+          <p style={{ color: "red" }}>
+            Lütfen geçerli bir ad ve soyad giriniz.
+          </p>
+        )}
         <h3>Sipariş Notu</h3>
         <Input
           type="textarea"
           name="siparisNotu"
           value={form.siparisNotu}
           onChange={handleChange}
+          placeholder="Siparişine eklemek istediğin bir not var mı?"
         />
       </div>
       <div className="siparisOzeti-container">
@@ -217,7 +240,10 @@ export default function OrderForm() {
           <h3>Sipariş Toplamı</h3>
           <p>Seçimler: {form.ekMalzeme.length * 5}₺</p>
           <p>Toplam: {fiyat}₺</p>
-          <button className="submit-button"> Sipariş Ver</button>
+          <button className="submit-button" disabled={!isValid}>
+            {" "}
+            Sipariş Ver
+          </button>
         </div>
       </div>
     </Form>
