@@ -8,6 +8,7 @@ import axios from "axios";
 const initialErrors = {
   ekMalzeme: true,
   fullname: true,
+  pizzaSize: true,
 };
 const malzemeler = [
   { value: "pepperoni", label: "Pepperoni" },
@@ -25,7 +26,7 @@ const malzemeler = [
   { value: "kabak", label: "Kabak" },
 ];
 const initialForm = {
-  pizzaSize: "orta",
+  pizzaSize: "",
   pizzaHamur: "klasik",
   ekMalzeme: [],
   siparisNotu: "",
@@ -70,6 +71,14 @@ export default function OrderForm() {
         setErrors({ ...errors, [name]: true });
       }
     }
+
+    if (name == "pizzaSize") {
+      if (value !== "") {
+        setErrors({ ...errors, [name]: false });
+      } else {
+        setErrors({ ...errors, [name]: true });
+      }
+    }
   };
   //handleSubmit fonksiyonu
   const handleSubmit = (e) => {
@@ -109,7 +118,7 @@ export default function OrderForm() {
 
   //isValid
   useEffect(() => {
-    if (errors.ekMalzeme || errors.fullname) {
+    if (errors.ekMalzeme || errors.fullname || errors.pizzaSize) {
       setIsValid(false);
     } else {
       setIsValid(true);
@@ -134,6 +143,9 @@ export default function OrderForm() {
         <div className="boyut-container">
           <div className="boyut">
             <h3>Boyut Seç</h3>
+            {errors.pizzaSize && (
+              <p style={{ color: "red" }}>Lütfen pizza için boyut seçiniz.</p>
+            )}
             <FormGroup>
               <Input
                 type="radio"
