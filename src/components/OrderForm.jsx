@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import Check from "./Check";
 import Count from "./Count";
 import axios from "axios";
+import OrderTotal from "./OrderTotal";
 
 const initialErrors = {
   ekMalzeme: true,
@@ -95,9 +96,19 @@ export default function OrderForm() {
         setForm(initialForm);
         setFiyat(0);
         setCount(1);
-        history.push("/siparisOzeti");
+        history.push({
+          pathname: "/siparisOzeti",
+          state: { id, createdAt, form, fiyat },
+        });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+
+        history.push({
+          pathname: "/errorPage",
+          state: { error: err.message, errorCode: err.code },
+        });
+      });
   };
 
   //toplam tutar hesaplamak için fonksiyon
@@ -240,6 +251,7 @@ export default function OrderForm() {
           placeholder="Siparişine eklemek istediğin bir not var mı?"
         />
       </div>
+      <div className="divider" />
       <div className="siparisOzeti-container">
         <div className="count-button">
           <Count
@@ -249,9 +261,7 @@ export default function OrderForm() {
           />
         </div>
         <div className="siparis-toplamı">
-          <h3>Sipariş Toplamı</h3>
-          <p>Seçimler: {form.ekMalzeme.length * 5}₺</p>
-          <p>Toplam: {fiyat}₺</p>
+          <OrderTotal formInfo={form} total={fiyat} />
           <button className="submit-button" disabled={!isValid}>
             {" "}
             Sipariş Ver

@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import OrderForm from "./components/OrderForm";
 import OrderSummary from "./components/OrderSummary";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/siparisFormu" component={OrderForm} />
         <Route path="/siparisOzeti" component={OrderSummary} />
+        <Route path="/errorPage" component={ErrorPage} />
       </Switch>
     </BrowserRouter>
   );

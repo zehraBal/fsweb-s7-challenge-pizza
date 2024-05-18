@@ -7,13 +7,13 @@ export default function Home() {
   }
 
   return (
-    <div class="home-page">
+    <div className="home-page">
       <h1>
         <span>KOD ACIKTIRIR</span>
         <span> PİZZA DOYURUR</span>
       </h1>
-      <div class="siparis-buton-div">
-        <button class="siparis-buton" type="button" onClick={handleClick}>
+      <div className="siparis-buton-div">
+        <button className="siparis-buton" type="button" onClick={handleClick}>
           Siparis Ver
         </button>
       </div>
