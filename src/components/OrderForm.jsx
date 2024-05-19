@@ -88,8 +88,8 @@ export default function OrderForm() {
     axios
       .post("https://reqres.in/api/pizza", form)
       .then((res) => {
-        console.log(res.data); // API yanıtını konsola yazdır
-        const { id, createdAt } = res.data; // Yanıttan gerekli bilgileri al
+        console.log(res.data);
+        const { id, createdAt } = res.data;
         console.log("Sipariş Özeti:");
         console.log("ID:", id);
         console.log("Oluşturulma Tarihi:", createdAt);
@@ -139,135 +139,127 @@ export default function OrderForm() {
   //form elemanları
 
   return (
-    <Form className="siparisForm-container" onSubmit={handleSubmit}>
-      <h3>Position Absolute Acı Pizza</h3>
-      <h2>85.50₺</h2>
-      <p>
-        Frontent Dev olarak hala position:absolute kullaniyorsan bu çok acı
-        pizza tam sana göre. Pizza. domates, peynir ve genellikle çeşitli diger
-        malzemelerle kaplanmış. daha sonra geleneksel olarak odun ateşinde bir
-        firinda yüksek sicaklkta pişirilen, genellikle yuvarlak, düzieştirilmiş
-        mayalı bugday bazlı hamurdan oluşan italyan kökenli lezzetli bir
-        yemektir.. Küçük bir pizzaya bazen pizzetta denir.
-      </p>
-      <div className="pizza-size-container">
-        <div className="boyut-container">
-          <div className="boyut">
-            <h3>Boyut Seç</h3>
-            {errors.pizzaSize && (
-              <p style={{ color: "red" }}>Lütfen pizza için boyut seçiniz.</p>
-            )}
-            <FormGroup>
-              <Input
-                type="radio"
-                name="pizzaSize"
-                value="Küçük"
-                onChange={handleChange}
-                checked={form.pizzaSize === "Küçük"}
-              />
-              <Label htmlFor="küçük">Küçük</Label>
-            </FormGroup>
+    <>
+      <Form className="siparisForm-container" onSubmit={handleSubmit}>
+        <div className="pizza-size-container">
+          <div className="boyut-container">
+            <div className="boyut">
+              <h3>Boyut Seç</h3>
+              {errors.pizzaSize && (
+                <p style={{ color: "red" }}>Lütfen pizza için boyut seçiniz.</p>
+              )}
+              <FormGroup>
+                <Input
+                  type="radio"
+                  name="pizzaSize"
+                  value="Küçük"
+                  onChange={handleChange}
+                  checked={form.pizzaSize === "Küçük"}
+                />
+                <Label htmlFor="küçük">Küçük</Label>
+              </FormGroup>
 
-            <FormGroup>
-              <Input
-                type="radio"
-                name="pizzaSize"
-                value="Orta"
-                onChange={handleChange}
-                checked={form.pizzaSize === "Orta"}
-              />
-              <Label htmlFor="orta">Orta</Label>
-            </FormGroup>
+              <FormGroup>
+                <Input
+                  type="radio"
+                  name="pizzaSize"
+                  value="Orta"
+                  onChange={handleChange}
+                  checked={form.pizzaSize === "Orta"}
+                />
+                <Label htmlFor="orta">Orta</Label>
+              </FormGroup>
 
+              <FormGroup>
+                <Input
+                  type="radio"
+                  name="pizzaSize"
+                  value="Büyük"
+                  onChange={handleChange}
+                  checked={form.pizzaSize === "Büyük"}
+                />
+                <Label htmlFor="büyük">Büyük</Label>
+              </FormGroup>
+            </div>
+          </div>
+          <div className="hamur-container">
+            <h3>Hamur Seç</h3>
             <FormGroup>
-              <Input
-                type="radio"
-                name="pizzaSize"
-                value="Büyük"
+              <select
+                type="select"
+                name="pizzaHamur"
                 onChange={handleChange}
-                checked={form.pizzaSize === "Büyük"}
-              />
-              <Label htmlFor="büyük">Büyük</Label>
+                value={form.pizzaHamur}
+              >
+                <option>Klasik Hamur</option>
+                <option>İnce Hamur</option>
+              </select>
             </FormGroup>
           </div>
         </div>
-        <div className="hamur-container">
-          <h3>Hamur Kalinligi</h3>
-          <FormGroup>
-            <select
-              type="select"
-              name="pizzaHamur"
-              onChange={handleChange}
-              value={form.pizzaHamur}
-            >
-              <option>Klasik Hamur</option>
-              <option>İnce Hamur</option>
-            </select>
-          </FormGroup>
-        </div>
-      </div>
 
-      <h3>Ek Malzemeler</h3>
-      {errors.ekMalzeme && (
-        <p style={{ color: "red" }}>
-          En az 4 en fazla 10 malzeme seçebilirsiniz. 5₺
-        </p>
-      )}
-      <div className="malzemeler-container">
-        {malzemeler.map((malzeme, index) => {
-          return (
-            <Check
-              key={index}
-              changeFn={handleChange}
-              isChecked={form.ekMalzeme.includes(malzeme.value)}
-              value={malzeme.value}
-              label={malzeme.label}
-              name="ekMalzeme"
-              className="malzeme-label"
-            />
-          );
-        })}
-      </div>
-
-      <div className="input-container">
-        <h3>Ad Soyad</h3>
-        <Input
-          type="textarea"
-          name="fullname"
-          value={form.fullname}
-          onChange={handleChange}
-        />
-        {errors.fullname && (
+        <h3>Ek Malzemeler</h3>
+        {errors.ekMalzeme && (
           <p style={{ color: "red" }}>
-            Lütfen geçerli bir ad ve soyad giriniz.
+            En az 4 en fazla 10 malzeme seçebilirsiniz. 5₺
           </p>
         )}
-        <h3>Sipariş Notu</h3>
-        <Input
-          type="textarea"
-          name="siparisNotu"
-          value={form.siparisNotu}
-          onChange={handleChange}
-          placeholder="Siparişine eklemek istediğin bir not var mı?"
-        />
-      </div>
-      <div className="divider" />
-      <div className="siparisOzeti-container">
-        <div className="count-button">
-          <Count
-            onCountChange={handleCountChange}
-            count={count}
-            setCount={setCount}
+        <div className="malzemeler-container">
+          {malzemeler.map((malzeme, index) => {
+            return (
+              <Check
+                key={index}
+                changeFn={handleChange}
+                isChecked={form.ekMalzeme.includes(malzeme.value)}
+                value={malzeme.value}
+                label={malzeme.label}
+                name="ekMalzeme"
+                className="malzeme-label"
+              />
+            );
+          })}
+        </div>
+
+        <div className="input-container">
+          <h3>Ad Soyad</h3>
+          <Input
+            type="textarea"
+            name="fullname"
+            value={form.fullname}
+            onChange={handleChange}
+          />
+          {errors.fullname && (
+            <p style={{ color: "red" }}>
+              Lütfen geçerli bir ad ve soyad giriniz.
+            </p>
+          )}
+          <h3>Sipariş Notu</h3>
+          <Input
+            type="textarea"
+            name="siparisNotu"
+            value={form.siparisNotu}
+            onChange={handleChange}
+            placeholder="Siparişine eklemek istediğin bir not var mı?"
           />
         </div>
-        <div className="siparis-toplamı">
-          <OrderTotal formInfo={form} total={fiyat} />
-          <button className="submit-button" disabled={!isValid}>
-            {" "}
-            Sipariş Ver
-          </button>
+        <div className="divider" />
+        <div className="siparisOzeti-container">
+          <div className="count-button">
+            <Count
+              onCountChange={handleCountChange}
+              count={count}
+              setCount={setCount}
+            />
+          </div>
+          <div className="siparis-toplamı">
+            <OrderTotal formInfo={form} total={fiyat} />
+            <button className="submit-button" disabled={!isValid}>
+              {" "}
+              Sipariş Ver
+            </button>
+          </div>
         </div>
-      </div>
-    </Form>
+      </Form>
+    </>
   );
 }

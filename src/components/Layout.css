@@ -5,15 +5,47 @@
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
+}
+.banner {
   background-image: url("Assets/mile1-assets/home-banner.png");
+  height: 90vh;
+  width: 100vw;
   background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-position: center;
+  h3 {
+    font-family: "Satisfy";
+    color: #fdc913;
+  }
+}
+.icons {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+}
+.icon-div {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  margin: 10px;
+
+  img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 8px;
+  }
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
 }
 .home-page h1 {
-  margin-top: 10%;
   font-weight: 300;
   text-align: center;
   color: #faf7f2;
@@ -24,37 +56,32 @@
 }
 .header {
   display: flex;
+  width: 100vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 20vh;
+  padding: 2rem;
+
   background-color: #ce2829;
 }
 
 .siparis.buton-div {
-  margin-top: 20%;
+  margin: 50px;
 }
 .siparis-buton {
-  background-color: #fdc913;
-  color: #292929;
-  border: 0;
+  background-color: #faf7f2;
+  color: #ce2829;
   border-radius: 100px;
-  box-sizing: border-box;
-  color: #292929; /* Metin rengi */
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   font-weight: 400;
-  text-transform: uppercase;
   justify-content: center;
-  line-height: 20px;
-  max-width: 480px;
-  min-height: 40px;
-  min-width: 0px;
+  align-items: center;
+  font-family: "Roboto Condensed";
 }
 .siparis-buton:hover {
-  background-color: #e0a300;
-  color: #292929;
+  background-color: #e2ded8;
+  color: #ee0a2c;
 }
 
 .siparisForm-container {
@@ -176,5 +203,296 @@ h3 {
     margin: 20px;
     border-top: 2px solid #faf7f2;
     width: 50vw;
+  }
+  .total-cont {
+    border: 1px solid #faf7f2;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+.images-section {
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+  margin: 2rem;
+}
+
+.ozel-lezzetus {
+  background-image: url("Assets/mile2-aseets/cta/kart-1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no repeat;
+  width: 40vw;
+  height: 50vh;
+  border-radius: 10px;
+  display: flex;
+  div {
+    color: #faf7f2;
+    padding: 20px;
+    font-family: "Quattrocento ";
+    font-weight: 800;
+  }
+}
+.hackathlon-npm-container {
+  width: 40vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.hackathlon {
+  height: 25vh;
+  background-image: url("Assets/mile2-aseets/cta/kart-2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  padding: 20px;
+  h4 {
+    margin-top: 20px;
+    font-family: "Roboto Condensed";
+    font-weight: 300;
+
+    color: #faf7f2;
+  }
+}
+
+.npm {
+  height: 25vh;
+  background-image: url("Assets/mile2-aseets/cta/kart-3.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  padding: 20px;
+  h5 {
+    margin-top: 20px;
+    font-family: "Roboto Condensed";
+    font-weight: 500;
+    color: #292929;
+  }
+}
+.context {
+  margin: 50px 20px 100px 20px;
+  padding: 20px;
+  width: 100vw;
+  height: 10vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .first-text {
+    font-size: 1.5rem;
+    font-family: "Satisfy";
+    color: #ce2829;
+  }
+  .second-text {
+    font-size: 2.5rem;
+    font-family: "Roboto Condensed";
+    color: #292929;
+  }
+}
+.footer {
+  justify-content: space-around;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  width: 100%;
+  background-color: #292929;
+  padding: 30px;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+  color: #faf7f2;
+  ul {
+    font-family: "Roboto Condensed";
+    font-weight: 200;
+    list-style-type: none;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+  h4 {
+    font-family: "Roboto Condensed";
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+}
+.footer-logo {
+  margin: 20px;
+}
+.instagram-container {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+.icon-radius {
+  margin: 30px;
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+}
+.icon-rad-div {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  gap: 5px;
+  margin-bottom: 2rem;
+  border: 0;
+  border-radius: 100px;
+  padding: 5px 25px 5px 25px;
+  background-color: white;
+}
+.bottom-icons-button {
+  border-radius: 100px;
+}
+.bottom-icons-button:hover {
+  background-color: #5f5f5f;
+}
+.card {
+  display: flex;
+}
+
+.top-icons {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  gap: 5px;
+  margin: 0px;
+  border: 0;
+  border-radius: 100px;
+  padding: 5px 25px 5px 25px;
+  background-color: white;
+}
+
+.aciktim-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Roboto Condensed";
+  color: #292929;
+  background-color: #fdc913;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  animation: bounce 0.5s cubic-bezier(0.8, 0, 1, 1) infinite alternate;
+}
+@keyframes bounce {
+  100% {
+    margin-top: 30px;
+  }
+}
+
+.food-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.food-card {
+  font-family: "Roboto Condensed";
+  border: 20px;
+  background-color: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  h5 {
+    padding: 30px;
+  }
+  img {
+    padding: 30px;
+  }
+}
+.card-body {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #faf7f2;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+.image-banner {
+  width: 60vw;
+  height: 32vh;
+  background-image: url("./Assets/mile2-aseets/pictures/form-banner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.nav-container .nav-link {
+  color: #5f5f5f;
+  transition: color 0.3s ease;
+}
+
+.nav-container .nav-link:hover {
+  color: #000; /* Hover durumunda renk değişimi */
+}
+.promotion-container {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h3 {
+    margin: 2rem;
+  }
+}
+
+.formpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-section {
+  margin: 20px;
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.view-section {
+  display: flex;
+  align-items: center;
+  h6 {
+    margin-left: 20px;
+  }
+}
+
+.errorPage {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ce2829;
+  color: #faf7f2;
+  h1 {
+    margin: 1rem;
   }
 }

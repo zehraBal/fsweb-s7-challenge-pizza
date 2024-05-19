@@ -15,7 +15,9 @@ export default function OrderConfirmation(props) {
           <li>Hamur: {form.pizzaHamur}</li>
           <li>Ek Malzemeler: {form.ekMalzeme.join(", ")}</li>
         </ul>
-        <OrderTotal formInfo={form} total={fiyat} />
+        <div className="total-cont">
+          <OrderTotal formInfo={form} total={fiyat} />
+        </div>
       </div>
     </div>
   );
