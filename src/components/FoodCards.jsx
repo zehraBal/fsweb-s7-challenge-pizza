@@ -1,6 +1,7 @@
-import { Card, CardBody, CardText } from "reactstrap";
+import { useHistory } from "react-router-dom";
 
 export default function FoodCards() {
+  const history = useHistory();
   const paths = [
     {
       name: "Terminal Pizza",
@@ -24,12 +25,15 @@ export default function FoodCards() {
       view: "(462)",
     },
   ];
+  function handleClick() {
+    history.push("/siparisFormu");
+  }
   return (
     <div className="food-cards">
       {paths.map((path, index) => {
         return (
-          <div className="food-card">
-            <div key={index}>
+          <div key={index} className="food-card" onClick={handleClick}>
+            <div>
               <img src={path.url} />
               <h5>{path.name}</h5>
               <div className="card-body">

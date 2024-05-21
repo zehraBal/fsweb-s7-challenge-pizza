@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
 }
+
 .banner {
   background-image: url("Assets/mile1-assets/home-banner.png");
   height: 90vh;
@@ -18,55 +19,63 @@
   flex-direction: column;
   align-items: center;
   background-position: center;
-  h3 {
-    font-family: "Satisfy";
-    color: #fdc913;
-  }
 }
+
+.banner h3 {
+  font-family: "Satisfy";
+  color: #fdc913;
+}
+
 .icons {
   display: flex;
   justify-content: space-around;
   width: 100vw;
+  flex-wrap: wrap;
 }
+
 .icon-div {
   display: flex;
   align-items: center;
   text-align: center;
   gap: 5px;
   margin: 10px;
-
-  img {
-    width: 50px;
-    height: auto;
-    margin-bottom: 8px;
-  }
-  p {
-    margin: 0;
-    font-size: 14px;
-  }
 }
+
+.icon-div img {
+  width: 50px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.icon-div p {
+  margin: 0;
+  font-size: 14px;
+}
+
 .home-page h1 {
   font-weight: 300;
   text-align: center;
   color: #faf7f2;
   font-size: 4.5rem;
 }
+
 .home-page span {
   display: block;
 }
+
 .header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem;
-
   background-color: #ce2829;
 }
 
 .siparis.buton-div {
   margin: 50px;
 }
+
 .siparis-buton {
   background-color: #faf7f2;
   color: #ce2829;
@@ -78,6 +87,7 @@
   align-items: center;
   font-family: "Roboto Condensed";
 }
+
 .siparis-buton:hover {
   background-color: #e2ded8;
   color: #ee0a2c;
@@ -86,21 +96,24 @@
 .siparisForm-container {
   max-width: 500px;
   margin: 0 auto;
-  .divider {
-    width: 500px;
-    border-top: 1px solid #5f5f5f;
-    margin: 10px 0 10px 0;
-  }
+}
+
+.siparisForm-container .divider {
+  width: 100%;
+  border-top: 1px solid #5f5f5f;
+  margin: 10px 0;
 }
 
 .siparisForm-container h2,
 h3 {
   margin: 10px;
 }
+
 .pizza-size-container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .malzemeler-container {
@@ -118,11 +131,13 @@ h3 {
 .malzemeler-container h3 {
   margin-bottom: 5px;
 }
+
 .siparisOzeti-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .siparis-toplamı {
@@ -144,6 +159,7 @@ h3 {
 .submit-button:hover {
   background-color: #f0bb3e;
 }
+
 .submit-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -173,6 +189,7 @@ h3 {
   background-color: #ce2829;
   color: #faf7f2;
 }
+
 .orderSum-container {
   width: 100vw;
   height: 100vh;
@@ -181,36 +198,41 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
-  h5 {
-    font-family: "Satisfy";
-    color: #fdc913;
-    font-size: 1.5rem;
-  }
-  h1 {
-    font-family: "Barlow";
-    font-weight: 300;
-  }
-  .siparis-toplamı {
-    border: 1px solid #faf7f2;
-    padding: 10px 15px 10px 15 px;
-  }
-  ul {
-    list-style-type: none;
-  }
-  .divider {
-    margin: 20px;
-    border-top: 2px solid #faf7f2;
-    width: 50vw;
-  }
-  .total-cont {
-    border: 1px solid #faf7f2;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    margin-top: 30px;
-    text-align: center;
-  }
+.orderSum-container h5 {
+  font-family: "Satisfy";
+  color: #fdc913;
+  font-size: 1.5rem;
+}
+
+.orderSum-container h1 {
+  font-family: "Barlow";
+  font-weight: 300;
+}
+
+.orderSum-container .siparis-toplamı {
+  border: 1px solid #faf7f2;
+  padding: 10px 15px;
+}
+
+.orderSum-container ul {
+  list-style-type: none;
+}
+
+.orderSum-container .divider {
+  margin: 20px;
+  border-top: 2px solid #faf7f2;
+  width: 50vw;
+}
+
+.orderSum-container .total-cont {
+  border: 1px solid #faf7f2;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: center;
 }
 
 .images-section {
@@ -218,24 +240,27 @@ h3 {
   justify-content: space-evenly;
   display: flex;
   margin: 2rem;
+  flex-wrap: wrap;
 }
 
 .ozel-lezzetus {
   background-image: url("Assets/mile2-aseets/cta/kart-1.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no repeat;
+  background-repeat: no-repeat;
   width: 40vw;
   height: 50vh;
   border-radius: 10px;
   display: flex;
-  div {
-    color: #faf7f2;
-    padding: 20px;
-    font-family: "Quattrocento ";
-    font-weight: 800;
-  }
 }
+
+.ozel-lezzetus div {
+  color: #faf7f2;
+  padding: 20px;
+  font-family: "Quattrocento";
+  font-weight: 800;
+}
+
 .hackathlon-npm-container {
   width: 40vw;
   height: 50vh;
@@ -243,6 +268,7 @@ h3 {
   flex-direction: column;
   gap: 20px;
 }
+
 .hackathlon {
   height: 25vh;
   background-image: url("Assets/mile2-aseets/cta/kart-2.png");
@@ -251,13 +277,13 @@ h3 {
   background-position: center;
   border-radius: 10px;
   padding: 20px;
-  h4 {
-    margin-top: 20px;
-    font-family: "Roboto Condensed";
-    font-weight: 300;
+}
 
-    color: #faf7f2;
-  }
+.hackathlon h4 {
+  margin-top: 20px;
+  font-family: "Roboto Condensed";
+  font-weight: 300;
+  color: #faf7f2;
 }
 
 .npm {
@@ -268,13 +294,15 @@ h3 {
   background-position: center;
   border-radius: 10px;
   padding: 20px;
-  h5 {
-    margin-top: 20px;
-    font-family: "Roboto Condensed";
-    font-weight: 500;
-    color: #292929;
-  }
 }
+
+.npm h5 {
+  margin-top: 20px;
+  font-family: "Roboto Condensed";
+  font-weight: 500;
+  color: #292929;
+}
+
 .context {
   margin: 50px 20px 100px 20px;
   padding: 20px;
@@ -284,18 +312,20 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .first-text {
-    font-size: 1.5rem;
-    font-family: "Satisfy";
-    color: #ce2829;
-  }
-  .second-text {
-    font-size: 2.5rem;
-    font-family: "Roboto Condensed";
-    color: #292929;
-  }
 }
+
+.context .first-text {
+  font-size: 1.5rem;
+  font-family: "Satisfy";
+  color: #ce2829;
+}
+
+.context .second-text {
+  font-size: 2.5rem;
+  font-family: "Roboto Condensed";
+  color: #292929;
+}
+
 .footer {
   justify-content: space-around;
   height: max-content;
@@ -307,23 +337,29 @@ h3 {
   padding: 30px;
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
   color: #faf7f2;
-  ul {
-    font-family: "Roboto Condensed";
-    font-weight: 200;
-    list-style-type: none;
-  }
-  li {
-    margin-bottom: 10px;
-  }
-  h4 {
-    font-family: "Roboto Condensed";
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
+  flex-wrap: wrap;
 }
+
+.footer ul {
+  font-family: "Roboto Condensed";
+  font-weight: 200;
+  list-style-type: none;
+}
+
+.footer li {
+  margin-bottom: 10px;
+}
+
+.footer h4 {
+  font-family: "Roboto Condensed";
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
 .footer-logo {
   margin: 20px;
 }
+
 .instagram-container {
   width: 300px;
   display: flex;
@@ -332,12 +368,15 @@ h3 {
   justify-content: center;
   gap: 5px;
 }
+
 .icon-radius {
   margin: 30px;
   display: flex;
   justify-content: space-around;
   width: 100vw;
+  flex-wrap: wrap;
 }
+
 .icon-rad-div {
   display: flex;
   align-items: center;
@@ -347,17 +386,21 @@ h3 {
   margin-bottom: 2rem;
   border: 0;
   border-radius: 100px;
-  padding: 5px 25px 5px 25px;
+  padding: 5px 25px;
   background-color: white;
 }
+
 .bottom-icons-button {
   border-radius: 100px;
 }
+
 .bottom-icons-button:hover {
   background-color: #5f5f5f;
 }
+
 .card {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .top-icons {
@@ -366,10 +409,10 @@ h3 {
   text-align: center;
   justify-content: space-around;
   gap: 5px;
-  margin: 0px;
+  margin: 0;
   border: 0;
   border-radius: 100px;
-  padding: 5px 25px 5px 25px;
+  padding: 5px 25px;
   background-color: white;
 }
 
@@ -390,6 +433,7 @@ h3 {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
   animation: bounce 0.5s cubic-bezier(0.8, 0, 1, 1) infinite alternate;
 }
+
 @keyframes bounce {
   100% {
     margin-top: 30px;
@@ -399,6 +443,8 @@ h3 {
 .food-cards {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  cursor: pointer;
 }
 
 .food-card {
@@ -408,13 +454,16 @@ h3 {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
-  h5 {
-    padding: 30px;
-  }
-  img {
-    padding: 30px;
-  }
 }
+
+.food-card h5 {
+  padding: 30px;
+}
+
+.food-card img {
+  padding: 30px;
+}
+
 .card-body {
   display: flex;
   justify-content: space-around;
@@ -426,9 +475,10 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  h3 {
-    margin: 2rem;
-  }
+}
+
+.promotion-container h3 {
+  margin: 2rem;
 }
 
 .formpage {
@@ -443,14 +493,16 @@ h3 {
   width: 500px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .view-section {
   display: flex;
   align-items: center;
-  h6 {
-    margin-left: 20px;
-  }
+}
+
+.view-section h6 {
+  margin-left: 20px;
 }
 
 .errorPage {
@@ -464,10 +516,12 @@ h3 {
   justify-content: center;
   background-color: #ce2829;
   color: #faf7f2;
-  h1 {
-    margin: 1rem;
-  }
 }
+
+.errorPage h1 {
+  margin: 1rem;
+}
+
 .form-banner {
   display: flex;
   flex-direction: column;
@@ -501,7 +555,7 @@ h3 {
   justify-content: space-around;
   width: 100%;
   text-align: center;
-  margin-top: 20px; /* Adjust the spacing between the image and navigation as needed */
+  margin-top: 20px;
 }
 
 .nav-container .nav-link {
@@ -510,22 +564,53 @@ h3 {
 }
 
 .nav-container .nav-link:hover {
-  color: #000; /* Hover durumunda renk değişimi */
+  color: #000;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .home-page h1 {
+    font-size: 3.5rem;
+  }
+
+  .ozel-lezzetus,
+  .hackathlon-npm-container {
+    width: 100%;
+  }
+
+  .orderSum-container .divider,
+  .orderSum-container .total-cont {
+    width: 80vw;
+  }
+
+  .footer {
+    padding: 15px;
+  }
+
+  .icon-radius,
+  .top-icons {
+    flex-wrap: wrap;
+  }
+
   .image-banner {
     max-width: 80vw;
   }
 }
 
 @media (max-width: 480px) {
+  .home-page h1 {
+    font-size: 2.5rem;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
   .image-banner {
     max-width: 100vw;
   }
 
   .nav-container {
-    margin-top: 10px; /* Adjust the spacing between the image and navigation for smaller screens */
+    margin-top: 10px;
   }
 }

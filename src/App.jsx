@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Router, Switch, Route } from "react-router-dom";
-import "./components/Layout.css";
+import "./components/NewLayout.css";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import OrderSummary from "./components/OrderSummary";

@@ -34,6 +34,11 @@ const initialForm = {
   fullname: "",
   adet: 1,
 };
+const errorMessages = {
+  fullname: "Lütfen geçerli bir ad ve soyad giriniz.",
+  pizzaSize: "Lütfen pizza için boyut seçiniz.",
+  ekMalzeme: " En az 4 en fazla 10 malzeme seçebilirsiniz. 5₺",
+};
 
 export default function OrderForm() {
   const history = useHistory();
@@ -146,7 +151,7 @@ export default function OrderForm() {
             <div className="boyut">
               <h3>Boyut Seç</h3>
               {errors.pizzaSize && (
-                <p style={{ color: "red" }}>Lütfen pizza için boyut seçiniz.</p>
+                <p style={{ color: "red" }}>{errorMessages.pizzaSize}</p>
               )}
               <FormGroup>
                 <Input
@@ -200,9 +205,7 @@ export default function OrderForm() {
 
         <h3>Ek Malzemeler</h3>
         {errors.ekMalzeme && (
-          <p style={{ color: "red" }}>
-            En az 4 en fazla 10 malzeme seçebilirsiniz. 5₺
-          </p>
+          <p style={{ color: "red" }}>{errorMessages.ekMalzeme}</p>
         )}
         <div className="malzemeler-container">
           {malzemeler.map((malzeme, index) => {
@@ -229,9 +232,7 @@ export default function OrderForm() {
             onChange={handleChange}
           />
           {errors.fullname && (
-            <p style={{ color: "red" }}>
-              Lütfen geçerli bir ad ve soyad giriniz.
-            </p>
+            <p style={{ color: "red" }}>{errorMessages.fullname}</p>
           )}
           <h3>Sipariş Notu</h3>
           <Input
