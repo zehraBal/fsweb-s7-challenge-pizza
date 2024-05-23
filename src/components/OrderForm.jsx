@@ -91,11 +91,11 @@ export default function OrderForm() {
     e.preventDefault();
     if (!isValid) return;
     axios
-      .post("https://reqres.in/api/pizza", form)
+      .post("https://reqres.in/api/pizza", { ...form })
       .then((res) => {
         console.log(res.data);
         const { id, createdAt } = res.data;
-        console.log("Sipariş Özeti:");
+        console.log("Sipariş Özeti");
         console.log("ID:", id);
         console.log("Oluşturulma Tarihi:", createdAt);
         setForm(initialForm);
@@ -103,7 +103,7 @@ export default function OrderForm() {
         setCount(1);
         history.push({
           pathname: "/siparisOzeti",
-          state: { id, createdAt, form, fiyat },
+          state: { form, fiyat },
         });
       })
       .catch((err) => {
@@ -226,7 +226,7 @@ export default function OrderForm() {
         <div className="input-container">
           <h3>Ad Soyad</h3>
           <Input
-            type="textarea"
+            type="input"
             name="fullname"
             value={form.fullname}
             onChange={handleChange}
