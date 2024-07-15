@@ -10,17 +10,17 @@ export default function Footer() {
           />
           <ul>
             <li>
-              <img src="./Assets/mile2-aseets/footer/icons/icon-1.png" />
+              <img src="/mile2-aseets/footer/icons/icon-1.png" />
               <span> </span>
               341 Londonderry Road,İstanbul Türkiye
             </li>
             <li>
-              <img src="./Assets/mile2-aseets/footer/icons/icon-2.png" />
+              <img src="/mile2-aseets/footer/icons/icon-2.png" />
               <span> </span>
               aciktim@teknolojikyemekler.com
             </li>
             <li>
-              <img src="./Assets/mile2-aseets/footer/icons/icon-3.png" />
+              <img src="/mile2-aseets/footer/icons/icon-3.png" />
               <span> </span>
               +90 216 123 45 67
             </li>
