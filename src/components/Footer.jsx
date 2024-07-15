@@ -42,24 +42,24 @@ export default function Footer() {
           <div className="instagram-container">
             <div>
               {" "}
-              <img src="./Assets/mile2-aseets/footer/insta/li-0.png" />
+              <img src="/mile2-aseets/footer/insta/li-0.png" />
             </div>
             <div>
-              <img src="./Assets/mile2-aseets/footer/insta/li-1.png" />
-            </div>
-            <div>
-              {" "}
-              <img src="./Assets/mile2-aseets/footer/insta/li-2.png" />
-            </div>
-            <div>
-              <img src="./Assets/mile2-aseets/footer/insta/li-3.png" />
+              <img src="/mile2-aseets/footer/insta/li-1.png" />
             </div>
             <div>
               {" "}
-              <img src="./Assets/mile2-aseets/footer/insta/li-4.png" />
+              <img src="/mile2-aseets/footer/insta/li-2.png" />
             </div>
             <div>
-              <img src="./Assets/mile2-aseets/footer/insta/li-5.png" />
+              <img src="/mile2-aseets/footer/insta/li-3.png" />
+            </div>
+            <div>
+              {" "}
+              <img src="/mile2-aseets/footer/insta/li-4.png" />
+            </div>
+            <div>
+              <img src="/mile2-aseets/footer/insta/li-5.png" />
             </div>
           </div>
         </div>
